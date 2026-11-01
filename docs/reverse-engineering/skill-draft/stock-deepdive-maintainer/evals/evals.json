@@ -1,0 +1,55 @@
+{
+  "skill_name": "stock-deepdive-maintainer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to move the plugin to the repo root so the path is shorter. Do it.",
+      "expected_output": "Declines or warns: Codex cannot load a root-level plugin; layout plugins/<name>/ must stay.",
+      "expectations": [
+        "Cites the Codex 'plugin not found' constraint (AGENTS.md / commit 0cb491d)",
+        "Does not move files without addressing both hosts",
+        "Mentions validating with both validators"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Replace ${CLAUDE_PLUGIN_ROOT} in the skills with <ราก> to make them host-neutral.",
+      "expected_output": "Explains that commit 3749845 deliberately restored the two-line form and why (shell redirect on literal <ราก>); keeps both lines.",
+      "expectations": [
+        "References the two-line convention",
+        "Notes AGENTS.md is stale on this point",
+        "Does not collapse command blocks to a placeholder"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Is check_numbers.py enough to guarantee no invented numbers reach the article?",
+      "expected_output": "No — explains scale list with absolute tolerance floor, polluted fact pool, skipped values < 100, non-gating exit code.",
+      "expectations": [
+        "Cites check_numbers.py lines for SCALES/tolerance/noise",
+        "Distinguishes a screen from proof",
+        "Proposes a concrete fix (value column + unit, or fact-ID references)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add a new box style 'box info' for writers to use.",
+      "expected_output": "Adds CSS to build_paper.py and the class to the whitelist in skills/deepdive/SKILL.md in the same change.",
+      "expectations": [
+        "Edits both build_paper.py CSS and SKILL.md class list",
+        "Does not use inline style=",
+        "Keeps output offline"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Writers keep quoting management in tier 1. Fix the tier model.",
+      "expected_output": "Identifies the three conflicting tier schemes and proposes one enum including management statements, updated in playbook, writer, factcheck and README together.",
+      "expectations": [
+        "Names SKILL.md, AGENTS.md and writer.md tier definitions",
+        "Updates all of them consistently",
+        "Does not invent data sources"
+      ]
+    }
+  ]
+}
