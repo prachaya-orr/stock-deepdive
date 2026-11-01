@@ -18,4 +18,6 @@ Severity is the analyst's judgement. Evidence: docs/reverse-engineering/BUSINESS
 | D-12 | Low | One 56-1 download failure skips remaining 56-1 files | `bin/fetch_th.py:328,346` | Per-item try |
 | D-13 | Low | `paper/_parts/` not namespaced by ticker | `SKILL.md:124-126` | `paper/<T>/_parts/` |
 | D-14 | Low | AGENTS.md forbids `${CLAUDE_PLUGIN_ROOT}` though 3749845 restored it deliberately | `AGENTS.md:39-40` | Update AGENTS.md |
+| D-16 | Med | 56-1 fetch takes the first 2 listed, which can be years apart (DITTO: FY2025 + FY2021), with no year in the output | `bin/fetch_th.py:324` | Parse the year from the index row; put it in the folder name and MANIFEST; warn on gaps |
+| D-17 | Low | 56-1 FILEIDs (`dat/f56/…`) miss the `YYYYMM/` pattern, so folder labels fall back to `R561_dat_f56_…_zip` | `bin/fetch_th.py:78-83` | Separate label rule for 56-1 |
 | D-15 | Low | Minor drift: FACTS size 80-120 vs 100-150; valuation ≥3 vs 2-3 angles; writer tables ≤3 cols; per-lane summary + disclaimer | see BUSINESS_LOGIC.md §5 | Single contract file |

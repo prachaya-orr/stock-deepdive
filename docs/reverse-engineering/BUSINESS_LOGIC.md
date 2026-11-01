@@ -47,6 +47,9 @@ Duplicate terminology is a **blocking finding** under Rosetta rule 13. *Section/
 
 The script itself says it is "a sieve, not proof" (`:117-120`). The README states it more strongly (`README.md:20,134`).
 
+**Live confirmation (L9 in [README](README.md#live-verification-2026-11-01)):** the real script reported 5 numbers checked with 1 orphan (80%) and exited 0.
+Fabricated figures 98,765, 4,567 and 77,777,777 passed. `45.3%` and `0.87` were never checked.
+
 ### BR-03 Raw units, no silent conversion
 - **Rule:** FACTS stores the value and unit as written in the document. Agents must not convert units (`SKILL.md:111-112`).
 - **Why:** Annual and quarterly statements of the same company often use different units (`:111`).
@@ -207,4 +210,5 @@ tier 1 (it is in a filing) or tier 3 (a headline). Either way it violates BR-05 
 | Fragment contains `<body>` | Everything before it, and after `</body>`, is dropped | `build_paper.py:114-115,126-127` |
 | `--title` contains `<` or `&` | Raw in `<h1>`, escaped in `<title>` | `build_paper.py:173,176` |
 | FACTS without numbers | exit 2 | `check_numbers.py:88-90` |
+| iDisc has a gap in 56-1 years (DITTO: only FY2025 and FY2021) | Both are fetched with no year in the folder name, so an agent may cite 2021 data as current | `fetch_th.py:324,78-83` (OBSERVED live, L6) |
 | Negative numbers in parentheses `(1,234)` | Parsed as positive 1234. Accounting negatives therefore match their positive FACTS entry, which is acceptable for a screen | `check_numbers.py:32` (DERIVED) |
